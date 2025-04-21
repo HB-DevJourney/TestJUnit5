@@ -19,6 +19,7 @@ Este repositório contém exercícios práticos realizados durante o curso **"Te
 
 - [`ContaBancariaTest`](https://github.com/HB-DevJourney/TestJUnit5/blob/main/src/test/java/com/algaworks/junit/desafios/ContaBancariaTest.java) – validações de criação, depósitos, saques e exceções
 - [`CarrinhoCompraTest`](https://github.com/HB-DevJourney/TestJUnit5/blob/main/src/test/java/com/algaworks/junit/desafios/CarrinhoCompraTest.java) – simulação de um carrinho de compras, com adição, remoção e alteração de itens
+- [`Cadastro de Post`](https://github.com/HB-DevJourney/TestJUnit5/blob/main/src/test/java/com/algaworks/junit/desafios/CadastroPostTest.java) - Este teste cobre os principais fluxos da classe CadastroPost, responsável pela criação, edição e remoção de posts em um sistema de blog.
 
 ## 🧪 Tecnologias
 
