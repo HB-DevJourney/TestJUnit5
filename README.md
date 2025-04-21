@@ -1,4 +1,4 @@
-# 🧪 Projeto de Testes Unitários com JUnit 5
+# 🧪 Testes Unitários com JUnit 5 — Desafios práticos do curso da AlgaWorks
 
 Este repositório contém exercícios práticos realizados durante o curso **"Testes Unitários com JUnit"** da [AlgaWorks](https://algaworks.com), com foco na criação de testes automatizados aplicando boas práticas e padrões modernos.
 
@@ -19,7 +19,7 @@ Este repositório contém exercícios práticos realizados durante o curso **"Te
 
 - [`ContaBancariaTest`](https://github.com/HB-DevJourney/TestJUnit5/blob/main/src/test/java/com/algaworks/junit/desafios/ContaBancariaTest.java) – validações de criação, depósitos, saques e exceções
 - [`CarrinhoCompraTest`](https://github.com/HB-DevJourney/TestJUnit5/blob/main/src/test/java/com/algaworks/junit/desafios/CarrinhoCompraTest.java) – simulação de um carrinho de compras, com adição, remoção e alteração de itens
-- [`Cadastro de Post`](https://github.com/HB-DevJourney/TestJUnit5/blob/main/src/test/java/com/algaworks/junit/desafios/CadastroPostTest.java) - Este teste cobre os principais fluxos da classe CadastroPost, responsável pela criação, edição e remoção de posts em um sistema de blog.
+- [`CadastroPostTest`](https://github.com/HB-DevJourney/TestJUnit5/blob/main/src/test/java/com/algaworks/junit/desafios/CadastroPostTest.java) – cobre os principais fluxos da classe `CadastroPost`, incluindo criação, edição, remoção e validações de regras de negócio.
 
 ## 🧪 Tecnologias
 
@@ -37,6 +37,6 @@ mvn clean test
 
 Ou use sua IDE (IntelliJ, Eclipse, VS Code) para executar diretamente os arquivos de teste.
 
-## ⚠️ Observação
-
-> Este projeto faz parte do meu aprendizado, por isso alguns testes exploram variações de estrutura, assertivas e organização de código como forma de prática. O foco é a **evolução contínua na qualidade de testes**.
+> ⚠️ **Nota:** Este projeto faz parte do meu processo de aprendizado.  
+> Por isso, alguns testes exploram diferentes estruturas, abordagens de validação e organização de código como prática intencional.  
+> O foco principal é a **evolução contínua na escrita de testes de qualidade**.
