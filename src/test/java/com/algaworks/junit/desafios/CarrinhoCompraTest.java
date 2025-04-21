@@ -4,6 +4,7 @@ import com.algaworks.junit.ecommerce.CarrinhoCompra;
 import com.algaworks.junit.ecommerce.Cliente;
 import com.algaworks.junit.ecommerce.ItemCarrinhoCompra;
 import com.algaworks.junit.ecommerce.Produto;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
@@ -230,6 +231,16 @@ class CarrinhoCompraTest {
                 carrinhoCompra.adicionarProduto(pcGamer, 1);
                 carrinhoCompra.adicionarProduto(pcGamer, 1);
                 carrinhoCompra.adicionarProduto(livro, 1);
+            }
+
+            // Fazer iterações de listas
+            @Test
+            @DisplayName("Então deve conter apenas produtos adicionados")
+            void entaoDeveConterApenasProdutosAdicionados() {
+                Assertions.assertThat(carrinhoCompra.getItens())
+                        .flatMap(ItemCarrinhoCompra::getProduto)
+                        .contains(pcGamer, livro)
+                        .doesNotContain(headset);
             }
 
             @Test

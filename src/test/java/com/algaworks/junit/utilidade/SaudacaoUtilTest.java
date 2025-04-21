@@ -1,104 +1,59 @@
 package com.algaworks.junit.utilidade;
 
+
+import org.assertj.core.api.Assertions;
+import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static com.algaworks.junit.utilidade.SaudacaoUtil.saudar;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
+
 
 @DisplayName("Testes no utilitário de saudação")
 class SaudacaoUtilTest {
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {5, 6, 7, 8, 9, 10, 11})
     @DisplayName("Deve saudar com bom dia")
-    public void saudarBomDia() {
-        int horaValida = 9;
-        String saudacao = saudar(horaValida);
-        assertEquals("Bom dia", saudacao, "Saudação incorreta");
+    public void saudarBomDia(int hora) {
+        String saudacao = saudar(hora);
+        assertThat(saudacao).is(SaudacoesUtilConditions.igualBomDia());
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {12, 13, 14, 15, 16, 17})
     @DisplayName("Deve saudar com boa tarde")
-    public void saudarBoaTarde() {
-        int horaValida = 15;
-        String saudacao = saudar(horaValida);
-        assertEquals("Boa tarde", saudacao, "Saudação incorreta");
+    public void saudarBoaTarde(int hora) {
+        String saudacao = saudar(hora);
+        Assertions.assertThat(saudacao).isEqualTo("Boa tarde");
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {18, 19, 20, 21, 22, 23, 0, 1, 2, 3, 4})
     @DisplayName("Deve saudar com boa noite")
-    public void saudarBoaNoite() {
-        int horaValida = 23;
-        String saudacao = saudar(horaValida);
-        assertEquals("Boa noite", saudacao, "Saudação incorreta");
-    }
-
-    @Test
-    @DisplayName("Deve saudar com bom dia a partir das 5 horas")
-    public void saudarComBomDiaAPartirDas5h() {
-        int horaValida = 5;
-        String saudacao = saudar(horaValida);
-        assertEquals("Bom dia", saudacao, "Saudação incorreta");
-    }
-
-    @Test
-    @DisplayName("Deve saudar com boa noite a partir até 4 horas")
-    public void saudarComBoaNoiteAteAs4h() {
-        int horaValida = 4;
-        String saudacao = saudar(horaValida);
-        assertEquals("Boa noite", saudacao, "Saudação incorreta");
-    }
-
-    @Test
-    @DisplayName("Deve saudar com bom dia até as 11 horas")
-    public void saudarLimiteBomDia() {
-        int horaValida = 11;
-        String saudacao = saudar(horaValida);
-        assertEquals("Bom dia", saudacao);
-    }
-
-    @Test
-    @DisplayName("Deve saudar com boa tarde até as 17 horas")
-    public void saudarLimiteBoaTarde() {
-        int horaValida = 17;
-        String saudacao = saudar(horaValida);
-        assertEquals("Boa tarde", saudacao);
-    }
-
-    @Test
-    @DisplayName("Deve saudar com boa noite até as 4 horas")
-    public void saudarLimiteBoaNoite() {
-        int horaValida = 4;
-        String saudacao = saudar(horaValida);
-        assertEquals("Boa noite", saudacao);
+    public void saudarBoaNoite(int hora) {
+        String saudacao = saudar(hora);
+        Assertions.assertThat(saudacao).isEqualTo("Boa noite");
     }
 
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {25, 26, 27, 28, 29, 30})
     @DisplayName("Deve lançar exception por hora muito alta")
-    public void deveLancarExceptionHoraAlta() {
-        int horaInvalida = 30;
-        Executable chamadaInvalidaDeMetodo = () -> saudar(horaInvalida);
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, chamadaInvalidaDeMetodo);
-        assertEquals("Hora inválida", e.getMessage());
+    public void deveLancarExceptionHoraAlta(int hora) {
+        assertThatThrownBy(() -> saudar(hora))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Hora inválida");
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {-1, -2, -3, -4, -5})
     @DisplayName("Deve lançar exception por hora negativa")
-    public void deveLancarException() {
-        int horaInvalida = -10;
-        Executable chamadaInvalidaDeMetodo = () -> saudar(horaInvalida);
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, chamadaInvalidaDeMetodo);
-        assertEquals("Hora inválida", e.getMessage());
+    public void deveLancarException(int hora) {
+        assertThatThrownBy(() -> saudar(hora))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Hora inválida");
     }
-
-    @Test
-    @DisplayName("Não deve lançar exception")
-    public void naoDeveLancarException() {
-        int horaValida = 0;
-        Executable chamadaValidaDeMetodo = () -> saudar(horaValida);
-        assertDoesNotThrow(chamadaValidaDeMetodo);
-    }
-
 }

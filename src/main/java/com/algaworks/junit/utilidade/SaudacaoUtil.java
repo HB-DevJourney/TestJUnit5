@@ -11,7 +11,7 @@ public class SaudacaoUtil {
             return "Bom dia";
         } else if(hora >= 12 && hora <= 17) {
             return "Boa tarde";
-        } else if(hora >= 18 && hora <= 23 || hora >= 0 && hora <= 5) {
+        } else if(hora >= 18 && hora <= 23 || hora >= 0 && hora <= 4) {
             return "Boa noite";
         }
         throw new IllegalArgumentException("Hora inválida");

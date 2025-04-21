@@ -1,5 +1,6 @@
 package com.algaworks.junit.blog.modelo;
 
+import java.lang.module.ModuleDescriptor;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.Objects;
@@ -102,6 +103,55 @@ public class Editor {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public final static class Builder {
+        private Long id;
+        private String nome;
+        private String email;
+        private BigDecimal valorPagoPorPalavra;
+        private boolean premium;
+
+        private Builder() {
+        }
+
+        public Builder ComId(Long id) {
+            this.id = id;
+            return this;
+        }
+        public Builder ComNome(String nome) {
+            this.nome = nome;
+            return this;
+        }
+
+        public Builder ComEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder ComValorPagoPorPalavra(BigDecimal valorPagoPorPalavra) {
+            this.valorPagoPorPalavra = valorPagoPorPalavra;
+            return this;
+        }
+
+        public Builder ComPremium(boolean premium) {
+            this.premium = premium;
+            return this;
+        }
+
+        public Editor build() {
+            return new Editor(
+                    this.id,
+                    this.nome,
+                    this.email,
+                    this.valorPagoPorPalavra,
+                    this.premium
+            );
+        }
     }
 
 }
